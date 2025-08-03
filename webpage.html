@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Submit to Google Sheet</title>
+</head>
+<body>
+  <input type="text" id="userInput" placeholder="Type something..." />
+  <button onclick="submitData()">Submit</button>
+
+  <script>
+    function submitData() {
+      const input = document.getElementById("userInput").value;
+
+      fetch("YOUR_WEB_APP_URL", {
+        method: "POST",
+        body: JSON.stringify({ input: input }),
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(response => response.text())
+      .then(data => alert(data))
+      .catch(error => console.error("Error!", error));
+    }
+  </script>
+</body>
+</html>
